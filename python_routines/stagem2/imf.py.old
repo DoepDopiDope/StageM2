@@ -1,0 +1,161 @@
+
+import numpy as np
+import os
+import warnings
+
+
+HDR = {"NAME": "Not initiated",
+       "ANALYTICAL_FORM": "Not initiated"}
+
+
+class imf:
+    """
+    IMF class
+    __________
+    Each IMF subclass must contain the methods :
+        - norm : normalizes the IMF distribution 
+        - evaluate : returns the value of the IMF distribution for te specified mass
+        - inv_imf : generate a list of random masses according to the considered IMF
+    Contains subclasses for different types of IMF :
+        - Salpeter
+        - Power law (TODO)
+        - Log-Normal (TODO)
+        - Segmented power law (TODO)
+    
+    """
+    def __init__(self, hdr=HDR.copy()):
+        """
+        Make HEADER, containing parameters of IMF
+        """
+        self.hdr = hdr
+        
+    def normalize(self, **kwargs):
+        """
+        Calls normalization method of current IMF
+        """
+        self.norm()
+        
+    def check_normalization(self):
+        """
+        Checks if current IMF has been normalized. Used in evaluate methods.
+        Returns K-normalization value. If it has not been normalized, returns 1 instead
+        """
+        if "NORMALIZATION_FACTOR" in self.hdr:
+            K = self.hdr["NORMALIZATION_FACTOR"]
+        else:
+            K = None
+            warnings.warn("WARNING : IMF is not yet normalized, check_normalization will return a normalization factor equal to 1. This can lead to negative values of distributions, which do not make any physical sense.")
+        return K
+    
+    def random(self,number):
+        """
+        Generate random number between 0 and 1 and return as many masses from curent imf distribution
+        """
+        c = np.random.uniform(size = number)
+        masses = self.inv(c)
+        return masses
+    
+class salpeter(imf):
+    """
+    Salpeter power law IMF object
+    ---------
+    Follow a distribution : dN/dM = K * M^-alpha
+    Where K = (-alpha + 1)*(-alpha + 2)/(M_max**(-alpha+2) - M_min**(-alpha+2))
+    With alpha = 2.35
+    """
+    
+    def __init__(self, M_min, M_max, alpha = 2.35, hdr=HDR.copy()):
+        """
+        Add specific "salpeter" header keys and values
+        """
+        hdr["NAME"] = "Salpeter"
+        hdr["ANALYTICAL_FORM"] = "dN/dM = M^-alpha"
+        hdr["alpha"] = 2.35
+        hdr["M_min"] = M_min
+        hdr["M_max"] = M_max
+        super().__init__(hdr.copy())
+        self.norm()
+    
+    
+    def norm(self, **kwargs):
+        """
+        Normalizes the distribution to 1 between M_min and M_max
+        Also updates M_min and M_max values if given
+        """
+        keys = {"alpha":None,
+                "M_min":None,
+                "M_max":None}
+        for key in keys:
+            if key in kwargs:
+                keys[key] = kwargs[key]
+            elif key in self.hdr:
+                keys[key] = self.hdr[key]
+            else:
+                raise ValueError("Missing keyword '{}' in **kwargs or hdr. Either give it or initiate the imf object with a predefined one".format(key))
+        alpha = keys["alpha"]
+        M_min = keys["M_min"]
+        M_max = keys["M_max"]
+        
+        K = (1-alpha)/(M_max**(1-alpha) - M_min**(1-alpha))
+        self.hdr["NORMALIZATION_FACTOR"] = K
+    
+    def evaluate(self, mass):
+        """
+        Returns the value of the distribution for a given mass.
+        Since the ditribution is normalized to 1, it is required to multiply the output by the total mass of the studied star population.
+        NOTE : If the output is negative, it is likely that the distribution has not yet been normalized.
+        """
+        K = self.check_normalization()
+        if K is None:
+            K = 1
+        alpha = self.hdr["alpha"]
+        number = K * mass**(-alpha)
+        
+        return number
+    
+    def inv(self, c):
+        """
+        Returns the value of 'mass' for which the integral from M_min to 'mass' is equal to the random value c given in input.
+        -> Basically returns a random mass within the current imf probability distribution.
+        """
+        
+        M_min = self.hdr["M_min"]
+        M_max = self.hdr["M_max"]
+        alpha = self.hdr["alpha"]
+        
+        power = 1-alpha
+        mass = (c*(M_max**power - M_min**power) + M_min**power)**(1/power)
+        
+        return mass
+
+
+
+def mass_population(distrib, total_mass, M_min = None, M_max = None, *args, **kwargs):
+    """
+    Generates a randomized mass population, given an IMF distribution object (distrib) and the total mass of the population (total_mass).
+    """
+    if M_min is None:
+        M_min = distrib.hdr["M_min"]
+    if M_max is None:
+        M_max = distrib.hdr["M_max"]
+    check = distrib.check_normalization()
+    if check is None:
+        distrib.norm()
+    masses = []
+    while np.sum(masses) < total_mass:
+        masses.append(distrib.random(number = None))
+    
+    print("Asked mass = {} M_sol".format(total_mass))
+    print("Final mass = {} M_sol".format(np.sum(masses)))
+    print("Generated a total of {} stars".format(len(masses)))
+    return masses
+
+
+
+
+
+
+
+
+
+
