@@ -110,6 +110,26 @@ class gaussian(position):
         self.pos =  [x,y,z]
 
 
+class EFF(position):
+    """
+    Position distribution along Elson, Fall & Freeman (1987) distribution
+    rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)
+    """
+    def __init__(self, a, gamma, hdr = HDR.copy()):
+        hdr["NAME"] = "Elson, Fall & Freeman"
+        hdr["ANALYTICAL_FORM"] = "rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)"
+        hdr["a"] = a
+        hdr["GAMMA"] = gamma
+        super().__init__(hdr.copy())
+    
+    def norm(self):
+        #TODO
+        return 0
+    
+    def inv(self):
+        #TODO
+        return 0
+
 class imf(distrib):
     """
     IMF class
@@ -122,7 +142,6 @@ class imf(distrib):
         - Salpeter
         - Log-Normal (TODO)
         - Segmented power law (TODO)
-    
     """
     def __init__(self, hdr=HDR.copy()):
         """
