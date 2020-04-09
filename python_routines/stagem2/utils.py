@@ -7,6 +7,12 @@ from simcado import utils
 from simcado.source import _scale_pickles_to_photons
 import matplotlib.colors as colors
 import matplotlib.pyplot as plt
+import os
+import sys
+import inspect
+
+__pkg_dir__ = os.path.dirname(inspect.getfile(inspect.currentframe()))
+
 
 
 # filename = "eff_25000msol_kroup.txt"
@@ -76,13 +82,16 @@ def get_coords(astropy_image):
     
     return coords
 
-
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx, array[idx]
 
 # crpix = 6304.5
 # crval = 90
 # cdelt = 1.1111111111111e-06
 
-def plot_full_array(savename = "test.png", astropy_image, vmin = None, vmax = None):
+def plot_full_array(astropy_image, vmin = None, vmax = None, savename = "test.png"):
     """
     Plots a SimCADO composite image consisting of all CCD arrays
     """
@@ -260,3 +269,26 @@ def make_simcado_source(filename = None, pos= None, star_masses=None, distance=N
     src.info["stel_type"] = stel_type
     
     return src
+
+
+
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = printEnd)
+    # Print New Line on Complete
+    if iteration >= total: 
+        print()

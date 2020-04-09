@@ -1,71 +1,254 @@
-03/06/2020 11:39:05 AM SimCADO imported
-03/06/2020 11:43:39 AM $HOME=/user/homedir/demarsd
-03/06/2020 11:43:39 AM CONFIGDIR=/user/homedir/demarsd/.config/matplotlib
-03/06/2020 11:43:39 AM matplotlib data path: /nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data
-03/06/2020 11:43:39 AM loaded rc file /nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
-03/06/2020 11:43:39 AM matplotlib version 3.0.3
-03/06/2020 11:43:39 AM interactive is False
-03/06/2020 11:43:39 AM platform is linux
-03/06/2020 11:43:39 AM loaded modules: ['sys', 'builtins', '_frozen_importlib', '_imp', '_thread', '_warnings', '_weakref', 'zipimport', '_frozen_importlib_external', '_io', 'marshal', 'posix', 'encodings', 'codecs', '_codecs', 'encodings.aliases', 'encodings.utf_8', '_signal', '__main__', 'encodings.latin_1', 'io', 'abc', '_abc', 'site', 'os', 'stat', '_stat', 'posixpath', 'genericpath', 'os.path', '_collections_abc', '_sitebuiltins', '_bootlocale', '_locale', 'types', 'importlib', 'importlib._bootstrap', 'importlib._bootstrap_external', 'warnings', 'importlib.util', 'importlib.abc', 'importlib.machinery', 'contextlib', 'collections', 'operator', '_operator', 'keyword', 'heapq', '_heapq', 'itertools', 'reprlib', '_collections', 'functools', '_functools', 'mpl_toolkits', 'encodings.cp437', 'readline', 'atexit', 'rlcompleter', 'simcado', 'logging', 'time', 'traceback', 'linecache', 'tokenize', 're', 'enum', 'sre_compile', '_sre', 'sre_parse', 'sre_constants', 'copyreg', 'token', 'weakref', '_weakrefset', 'collections.abc', 'string', '_string', 'threading', 'astropy', 'astropy.version', '__future__', 'datetime', 'math', '_datetime', 'astropy._compiler', 'astropy.cython_version', 'numpy', 'numpy._globals', 'numpy.__config__', 'numpy.version', 'numpy._distributor_init', 'numpy.core', 'numpy.core.info', 'numpy.core.multiarray', 'numpy.core.overrides', 'numpy.core._multiarray_umath', 'numpy.compat', 'numpy.compat._inspect', 'numpy.compat.py3k', 'pathlib', 'fnmatch', 'ntpath', 'errno', 'urllib', 'urllib.parse', 'numpy.core.umath', 'numpy.core.numerictypes', 'numbers', 'numpy.core._string_helpers', 'numpy.core._type_aliases', 'numpy.core._dtype', 'numpy.core.numeric', 'numpy.core._internal', 'ctypes', '_ctypes', 'struct', '_struct', 'ctypes._endian', 'pickle', '_compat_pickle', '_pickle', 'numpy.core.fromnumeric', 'numpy.core._methods', 'numpy.core.arrayprint', 'numpy.core.defchararray', 'numpy.core.records', 'numpy.core.memmap', 'numpy.core.function_base', 'numpy.core.machar', 'numpy.core.getlimits', 'numpy.core.shape_base', 'numpy.core.einsumfunc', 'numpy.core._add_newdocs', 'numpy.core._multiarray_tests', 'numpy.core._dtype_ctypes', 'numpy._pytesttester', 'numpy.lib', 'numpy.lib.info', 'numpy.lib.type_check', 'numpy.lib.ufunclike', 'numpy.lib.index_tricks', 'numpy.matrixlib', 'numpy.matrixlib.defmatrix', 'ast', '_ast', 'numpy.linalg', 'numpy.linalg.info', 'numpy.linalg.linalg', 'numpy.lib.twodim_base', 'numpy.linalg.lapack_lite', 'numpy.linalg._umath_linalg', 'numpy.lib.function_base', 'numpy.lib.utils', 'numpy.lib.histograms', 'numpy.lib.stride_tricks', 'numpy.lib.mixins', 'numpy.lib.nanfunctions', 'numpy.lib.shape_base', 'numpy.lib.scimath', 'numpy.lib.polynomial', 'numpy.lib.arraysetops', 'numpy.lib.npyio', 'numpy.lib.format', 'numpy.lib._datasource', 'shutil', 'zlib', 'bz2', '_compression', '_bz2', 'lzma', '_lzma', 'pwd', 'grp', 'numpy.lib._iotools', 'numpy.lib.financial', 'decimal', '_decimal', 'numpy.lib.arrayterator', 'numpy.lib.arraypad', 'numpy.lib._version', 'numpy.fft', 'numpy.fft.info', 'numpy.fft.fftpack', 'numpy.fft.fftpack_lite', 'numpy.fft.helper', 'numpy.polynomial', 'numpy.polynomial.polynomial', 'numpy.polynomial.polyutils', 'numpy.polynomial._polybase', 'numpy.polynomial.chebyshev', 'numpy.polynomial.legendre', 'numpy.polynomial.hermite', 'numpy.polynomial.hermite_e', 'numpy.polynomial.laguerre', 'numpy.random', 'numpy.random.mtrand', 'cython_runtime', 'mtrand', 'numpy.ctypeslib', 'numpy.ma', 'numpy.ma.core', 'textwrap', 'numpy.ma.extras', 'numpy.testing', 'unittest', 'unittest.result', 'unittest.util', 'unittest.case', 'difflib', 'pprint', 'unittest.suite', 'unittest.loader', 'unittest.main', 'argparse', 'gettext', 'locale', 'unittest.runner', 'unittest.signals', 'signal', 'numpy.testing._private', 'numpy.testing._private.utils', 'gc', 'tempfile', 'random', 'hashlib', '_hashlib', '_blake2', '_sha3', 'bisect', '_bisect', '_random', 'numpy.testing._private.decorators', 'numpy.testing._private.nosetester', 'astropy.utils', 'astropy.utils.codegen', 'inspect', 'dis', 'opcode', '_opcode', 'astropy.utils.introspection', 'distutils', 'distutils.version', 'astropy.utils.decorators', 'astropy.utils.exceptions', 'astropy.utils.misc', 'json', 'json.decoder', 'json.scanner', '_json', 'json.encoder', 'unicodedata', 'astropy.config', 'astropy.config.paths', 'astropy.config.configuration', 'astropy.extern', 'astropy.extern.configobj', 'astropy.extern.configobj.configobj', 'astropy.extern.configobj.validate', 'astropy.config.affiliated', 'astropy.tests', 'astropy.tests.runner', 'glob', 'copy', 'shlex', 'astropy.logger', 'astropy.utils._compiler', 'simcado.utils', 'wget', 'urllib.request', 'base64', 'binascii', 'email', 'http', 'http.client', 'email.parser', 'email.feedparser', 'email.errors', 'email._policybase', 'email.header', 'email.quoprimime', 'email.base64mime', 'email.charset', 'email.encoders', 'quopri', 'email.utils', 'socket', '_socket', 'selectors', 'select', 'email._parseaddr', 'calendar', 'email.message', 'uu', 'email._encoded_words', 'email.iterators', 'ssl', '_ssl', 'urllib.error', 'urllib.response', 'astropy.units', 'astropy.units.core', 'astropy.units.utils', 'fractions', 'astropy.units.format', 'astropy.units.format.base', 'astropy.units.format.generic', 'astropy.units.format.utils', 'astropy.units.format.cds', 'astropy.units.format.console', 'astropy.units.format.fits', 'astropy.units.format.latex', 'astropy.units.format.ogip', 'astropy.units.format.unicode_format', 'astropy.units.format.vounit', 'astropy.units.quantity', 'astropy.utils.compat', 'astropy.utils.compat.misc', 'astropy.utils.compat.numpycompat', 'astropy.utils.data_info', 'astropy.utils.metadata', 'astropy.units.quantity_helper', 'astropy.units.quantity_helper.converters', 'astropy.units.quantity_helper.helpers', 'astropy.units.quantity_helper.scipy_special', 'astropy.units.quantity_helper.erfa', 'astropy.units.si', 'astropy.constants', 'astropy.constants.constant', 'astropy.constants.si', 'astropy.constants.codata2014', 'astropy.constants.iau2015', 'astropy.constants.cgs', 'astropy.constants.utils', 'astropy.units.cgs', 'astropy.units.astrophys', 'astropy.extern.ply', 'astropy.extern.ply.yacc', 'astropy.units.format.generic_parsetab', 'astropy.extern.ply.lex', 'astropy.units.format.generic_lextab', 'astropy.units.photometric', 'astropy.units.function', 'astropy.units.function.core', 'astropy.units.function.logarithmic', 'astropy.units.function.units', 'astropy.units.function.mixin', 'astropy.units.physical', 'astropy.units.imperial', 'astropy.units.equivalencies', 'astropy.units.function.magnitude_zero_points', 'astropy.units.decorators', 'astropy.io', 'astropy.io.fits', 'astropy.io.fits.card', 'astropy.io.fits.util', 'gzip', 'mmap', 'platform', 'subprocess', '_posixsubprocess', 'astropy.utils.data', 'shelve', 'astropy.io.fits.verify', 'astropy.io.fits.column', 'astropy.io.fits.convenience', 'astropy.io.fits.diff', 'astropy.io.fits.header', 'astropy.io.fits.file', 'zipfile', 'astropy.io.fits.hdu', 'astropy.io.fits.hdu.base', 'astropy.io.fits.hdu.compressed', 'astropy.io.fits.hdu.image', 'astropy.io.fits.hdu.table', 'csv', '_csv', 'astropy.io.fits.fitsrec', 'astropy.io.fits.compression', 'astropy.io.fits.hdu.groups', 'astropy.io.fits.hdu.hdulist', 'astropy.io.fits.hdu.nonstandard', 'astropy.io.fits.hdu.streaming', 'astropy.utils.diff', 'astropy.io.ascii', 'astropy.io.ascii.core', 'astropy.table', 'astropy.table.column', 'astropy.utils.console', 'multiprocessing', 'multiprocessing.context', 'multiprocessing.process', 'multiprocessing.reduction', 'array', '__mp_main__', 'fcntl', 'termios', 'astropy.table.groups', 'astropy.table.index', 'astropy.table.bst', 'astropy.table.sorted_array', 'astropy.time', 'astropy.time.formats', 'astropy._erfa', 'astropy._erfa.core', 'astropy._erfa.ufunc', 'astropy.time.utils', 'astropy.time.core', 'astropy.extern._strptime', 'astropy.table.pprint', 'astropy.table.np_utils', 'astropy.table._np_utils', 'numpy.lib.recfunctions', 'numpy.ma.mrecords', 'astropy.table._column_mixins', 'astropy.table.table', 'astropy.io.registry', 'astropy.table.row', 'astropy.table.info', 'astropy.table.operations', 'astropy.table.soco', 'astropy.table.serialize', 'astropy.table.jsviewer', 'astropy.io.ascii.connect', 'astropy.io.fits.connect', 'astropy.table.meta', 'astropy.io.misc', 'astropy.io.misc.pickle_helpers', 'astropy.io.misc.connect', 'astropy.io.misc.hdf5', 'astropy.io.votable', 'astropy.io.votable.table', 'astropy.io.votable.exceptions', 'astropy.io.votable.tree', 'astropy.utils.collections', 'astropy.utils.xml', 'astropy.utils.xml.writer', 'astropy.utils.xml._iterparser', 'astropy.io.votable.converters', 'astropy.io.votable.ucd', 'astropy.io.votable.util', 'astropy.io.votable.xmlutil', 'astropy.utils.xml.check', 'astropy.utils.xml.validate', 'astropy.io.votable.tablewriter', 'astropy.utils.xml.iterparser', 'astropy.io.votable.connect', 'astropy.io.ascii.basic', 'astropy.io.ascii.fastbasic', '_cython_0_28_5', 'astropy.io.ascii.cparser', 'backports_abc', 'queue', '_queue', 'astropy.io.ascii.cds', 'astropy.io.ascii.fixedwidth', 'astropy.io.ascii.ecsv', 'astropy.io.ascii.latex', 'astropy.io.ascii.html', 'astropy.io.ascii.ipac', 'astropy.io.ascii.daophot', 'astropy.io.ascii.misc', 'astropy.io.ascii.sextractor', 'astropy.io.ascii.rst', 'astropy.io.ascii.ui', 'yaml', 'yaml.error', 'yaml.tokens', 'yaml.events', 'yaml.nodes', 'yaml.loader', 'yaml.reader', 'yaml.scanner', 'yaml.parser', 'yaml.composer', 'yaml.constructor', 'yaml.resolver', 'yaml.dumper', 'yaml.emitter', 'yaml.serializer', 'yaml.representer', 'simcado.spectral', 'simcado.spatial', 'scipy', 'scipy._distributor_init', 'scipy.__config__', 'scipy.version', 'scipy._lib', 'scipy._lib._testutils', 'scipy._lib._version', 'scipy._lib.six', 'scipy._lib._ccallback', 'scipy._lib._ccallback_c', 'scipy.ndimage', 'scipy.ndimage.filters', 'scipy.ndimage._ni_support', 'scipy.ndimage._nd_image', 'scipy.ndimage._ni_docstrings', 'scipy.misc', 'scipy.misc.doccer', 'scipy.misc.common', 'scipy.interpolate', 'scipy.interpolate.interpolate', 'scipy.linalg', 'scipy.linalg.linalg_version', 'scipy.linalg.misc', 'scipy.linalg.blas', 'scipy.linalg._fblas', 'scipy.linalg.lapack', 'scipy.linalg._flapack', 'scipy._lib._util', 'scipy.linalg.basic', 'scipy.linalg.flinalg', 'scipy.linalg._flinalg', 'scipy.linalg.decomp', 'scipy.linalg.decomp_svd', 'scipy.linalg._solve_toeplitz', '_cython_0_29', 'scipy.linalg.decomp_lu', 'scipy.linalg._decomp_ldl', 'scipy.linalg.decomp_cholesky', 'scipy.linalg.decomp_qr', 'scipy.linalg._decomp_qz', 'scipy.linalg.decomp_schur', 'scipy.linalg._decomp_polar', 'scipy.linalg.matfuncs', 'scipy.linalg.special_matrices', 'scipy.linalg._expm_frechet', 'scipy.linalg._matfuncs_sqrtm', 'scipy.linalg._solvers', 'scipy.linalg._procrustes', 'scipy.linalg._decomp_update', 'scipy.linalg.cython_blas', 'scipy.linalg.cython_lapack', 'scipy.linalg._sketches', 'numpy.dual', 'scipy.special', 'scipy.special.sf_error', 'scipy.special._ufuncs', 'scipy.special._ufuncs_cxx', 'scipy.special.basic', 'scipy.special.specfun', 'scipy.special.orthogonal', 'scipy.special._comb', 'scipy.special._logsumexp', 'scipy.special.spfun_stats', 'scipy.special._ellip_harm', 'scipy.special._ellip_harm_2', 'scipy.special.lambertw', 'scipy.special._spherical_bessel', 'scipy.interpolate.fitpack', 'scipy.interpolate._fitpack_impl', 'scipy.interpolate._fitpack', 'scipy.interpolate.dfitpack', 'scipy.interpolate._bsplines', 'scipy.interpolate._bspl', 'scipy.interpolate.polyint', 'scipy.interpolate._ppoly', 'scipy.interpolate.fitpack2', 'scipy.interpolate.interpnd', 'scipy.spatial', 'scipy.spatial.kdtree', 'scipy.sparse', 'scipy.sparse.base', 'scipy._lib._numpy_compat', 'scipy.sparse.sputils', 'scipy.sparse.csr', 'scipy.sparse._sparsetools', 'scipy.sparse.compressed', 'scipy.sparse.data', 'scipy.sparse.dia', 'scipy.sparse.csc', 'scipy.sparse.lil', 'scipy.sparse._csparsetools', 'scipy.sparse.dok', 'scipy.sparse.coo', 'scipy.sparse.bsr', 'scipy.sparse.construct', 'scipy.sparse.extract', 'scipy.sparse._matrix_io', 'scipy.sparse.csgraph', 'scipy.sparse.csgraph._laplacian', 'scipy.sparse.csgraph._shortest_path', 'scipy.sparse.csgraph._validation', 'scipy.sparse.csgraph._tools', 'scipy.sparse.csgraph._traversal', 'scipy.sparse.csgraph._min_spanning_tree', 'scipy.sparse.csgraph._reordering', 'scipy.spatial.ckdtree', 'scipy.spatial.qhull', 'scipy._lib.messagestream', 'scipy.spatial._spherical_voronoi', 'scipy.spatial._voronoi', 'scipy.spatial.distance', 'scipy.spatial._distance_wrap', 'scipy.spatial._hausdorff', 'scipy.spatial._plotutils', 'scipy._lib.decorator', 'scipy.spatial._procrustes', 'scipy.spatial.transform', 'scipy.spatial.transform.rotation', 'scipy.interpolate.rbf', 'scipy.interpolate._cubic', 'scipy.interpolate.ndgriddata', 'scipy.interpolate._pade', 'scipy.misc.pilutil', 'PIL', 'PIL._version', 'PIL.Image', 'PIL.ImageMode', 'PIL.TiffTags', 'PIL._binary', 'PIL._util', 'PIL._imaging', 'PIL.ImageFilter', 'scipy.ndimage.fourier', 'scipy.ndimage.interpolation', 'scipy.ndimage.measurements', 'scipy.ndimage._ni_label', '_ni_label', 'scipy.ndimage.morphology', 'scipy.ndimage.io', 'scipy.signal', 'scipy.signal.sigtools', 'scipy.signal.windows', 'scipy.signal.windows.windows', 'scipy.fftpack', 'scipy.fftpack.basic', 'scipy.fftpack._fftpack', 'scipy.fftpack.helper', 'scipy.fftpack.pseudo_diffs', 'scipy.fftpack.convolve', 'scipy.fftpack.realtransforms', 'scipy.signal.waveforms', 'scipy.signal._max_len_seq', 'scipy.signal._max_len_seq_inner', 'scipy.signal._upfirdn', 'scipy.signal._upfirdn_apply', 'scipy.signal.spline', 'scipy.signal.bsplines', 'scipy.signal.filter_design', 'scipy.optimize', 'scipy.optimize.optimize', 'scipy.optimize.linesearch', 'scipy.optimize.minpack2', 'scipy.optimize._minimize', 'scipy.optimize._trustregion_dogleg', 'scipy.optimize._trustregion', 'scipy.optimize._trustregion_ncg', 'scipy.optimize._trustregion_krylov', 'scipy.optimize._trlib', 'scipy.optimize._trlib._trlib', 'scipy.optimize._trustregion_exact', 'scipy.optimize._trustregion_constr', 'scipy.optimize._trustregion_constr.minimize_trustregion_constr', 'scipy.sparse.linalg', 'scipy.sparse.linalg.isolve', 'scipy.sparse.linalg.isolve.iterative', 'scipy.sparse.linalg.isolve._iterative', 'scipy.sparse.linalg.interface', 'scipy.sparse.linalg.isolve.utils', 'scipy._lib._threadsafety', 'scipy.sparse.linalg.isolve.minres', 'scipy.sparse.linalg.isolve.lgmres', 'scipy.sparse.linalg.isolve._gcrotmk', 'scipy.sparse.linalg.isolve.lsqr', 'scipy.sparse.linalg.isolve.lsmr', 'scipy.sparse.linalg.dsolve', 'scipy.sparse.linalg.dsolve.linsolve', 'scipy.sparse.linalg.dsolve._superlu', 'scipy.sparse.linalg.dsolve._add_newdocs', 'scipy.sparse.linalg.eigen', 'scipy.sparse.linalg.eigen.arpack', 'scipy.sparse.linalg.eigen.arpack.arpack', 'scipy.sparse.linalg.eigen.arpack._arpack', 'scipy.sparse.linalg.eigen.lobpcg', 'scipy.sparse.linalg.eigen.lobpcg.lobpcg', 'scipy.sparse.linalg.matfuncs', 'scipy.sparse.linalg._onenormest', 'scipy.sparse.linalg._norm', 'scipy.sparse.linalg._expm_multiply', 'scipy.optimize._differentiable_functions', 'scipy.optimize._numdiff', 'scipy.optimize._group_columns', 'scipy.optimize._hessian_update_strategy', 'scipy.optimize._constraints', 'scipy.optimize._trustregion_constr.equality_constrained_sqp', 'scipy.optimize._trustregion_constr.projections', 'scipy.optimize._trustregion_constr.qp_subproblem', 'scipy.optimize._trustregion_constr.canonical_constraint', 'scipy.optimize._trustregion_constr.tr_interior_point', 'scipy.optimize._trustregion_constr.report', 'scipy.optimize.lbfgsb', 'scipy.optimize._lbfgsb', 'scipy.optimize.tnc', 'scipy.optimize.moduleTNC', 'scipy.optimize.cobyla', 'scipy.optimize._cobyla', 'scipy.optimize.slsqp', 'scipy.optimize._slsqp', 'scipy.optimize._root', 'scipy.optimize.minpack', 'scipy.optimize._minpack', 'scipy.optimize._lsq', 'scipy.optimize._lsq.least_squares', 'scipy.optimize._lsq.trf', 'scipy.optimize._lsq.common', 'scipy.optimize._lsq.dogbox', 'scipy.optimize._lsq.lsq_linear', 'scipy.optimize._lsq.trf_linear', 'scipy.optimize._lsq.givens_elimination', 'scipy.optimize._lsq.bvls', 'scipy.optimize._spectral', 'scipy.optimize.nonlin', 'scipy.optimize._root_scalar', 'scipy.optimize.zeros', 'scipy.optimize._zeros', 'scipy.optimize.nnls', 'scipy.optimize._nnls', 'scipy.optimize._basinhopping', 'scipy.optimize._linprog', 'scipy.optimize._linprog_ip', 'scipy.optimize._linprog_simplex', 'scipy.optimize._linprog_util', 'scipy.optimize._remove_redundancy', 'scipy.optimize._hungarian', 'scipy.optimize._differentialevolution', 'scipy.optimize._shgo', 'scipy.optimize._shgo_lib', 'scipy.optimize._shgo_lib.sobol_seq', 'scipy.optimize._shgo_lib.triangulation', 'scipy.optimize._dual_annealing', 'scipy.signal.fir_filter_design', 'scipy.signal.ltisys', 'scipy.integrate', 'scipy.integrate.quadrature', 'scipy.integrate.odepack', 'scipy.integrate._odepack', 'scipy.integrate.quadpack', 'scipy.integrate._quadpack', 'scipy.integrate._ode', 'scipy.integrate.vode', 'scipy.integrate._dop', 'scipy.integrate.lsoda', 'scipy.integrate._bvp', 'scipy.integrate._ivp', 'scipy.integrate._ivp.ivp', 'scipy.integrate._ivp.bdf', 'scipy.integrate._ivp.common', 'scipy.integrate._ivp.base', 'scipy.integrate._ivp.radau', 'scipy.integrate._ivp.rk', 'scipy.integrate._ivp.lsoda', 'scipy.signal.lti_conversion', 'scipy.signal.signaltools', 'timeit', 'scipy.signal._arraytools', 'scipy.signal._savitzky_golay', 'scipy.signal.spectral', 'scipy.signal._spectral', 'scipy.signal.wavelets', 'scipy.signal._peak_finding', 'scipy.stats', 'scipy.stats.stats', 'scipy.stats.distributions', 'scipy.stats._distn_infrastructure', 'scipy.stats._distr_params', 'scipy.stats._constants', 'scipy.stats._continuous_distns', 'scipy.stats._stats', 'scipy.stats._tukeylambda_stats', 'scipy.stats._discrete_distns', 'scipy.stats.mstats_basic', 'scipy.stats._stats_mstats_common', 'scipy.stats._rvs_sampling', 'scipy.stats.morestats', 'scipy.stats.statlib', 'scipy.stats.contingency', 'scipy.stats._binned_statistic', 'scipy.stats.kde', 'scipy.stats.mvn', 'scipy.stats.mstats', 'scipy.stats.mstats_extras', 'scipy.stats._multivariate', 'scipy.signal._peak_finding_utils', 'astropy.convolution', 'astropy.convolution.core', 'astropy.convolution.utils', 'astropy.modeling', 'astropy.modeling.fitting', 'astropy.modeling.utils', 'astropy.modeling.optimizers', 'astropy.modeling.statistic', 'pkg_resources', 'pkgutil', 'plistlib', 'xml', 'xml.parsers', 'xml.parsers.expat', 'pyexpat.errors', 'pyexpat.model', 'pyexpat', 'xml.parsers.expat.model', 'xml.parsers.expat.errors', 'pkg_resources.extern', 'pkg_resources._vendor', 'pkg_resources.extern.six', 'pkg_resources._vendor.six', 'pkg_resources.extern.six.moves', 'pkg_resources._vendor.six.moves', 'pkg_resources.py31compat', 'pkg_resources.extern.appdirs', 'pkg_resources._vendor.packaging.__about__', 'pkg_resources.extern.packaging', 'pkg_resources.extern.packaging.version', 'pkg_resources.extern.packaging._structures', 'pkg_resources.extern.packaging.specifiers', 'pkg_resources.extern.packaging._compat', 'pkg_resources.extern.packaging.requirements', 'pkg_resources.extern.pyparsing', 'pkg_resources.extern.six.moves.urllib', 'pkg_resources.extern.packaging.markers', 'sysconfig', 'astropy.modeling.models', 'astropy.modeling.core', 'astropy.nddata', 'astropy.nddata.nddata', 'astropy.nddata.nddata_base', 'astropy.nddata.nduncertainty', 'astropy.nddata.nddata_withmixins', 'astropy.nddata.mixins', 'astropy.nddata.mixins.ndslicing', 'astropy.nddata.mixins.ndarithmetic', 'astropy.nddata.mixins.ndio', 'astropy.nddata.flag_collection', 'astropy.nddata.decorators', 'astropy.nddata.compat', 'astropy.nddata.utils', 'astropy.coordinates', 'astropy.coordinates.errors', 'astropy.coordinates.angles', 'astropy.coordinates.angle_utilities', 'astropy.coordinates.baseframe', 'astropy.coordinates.transformations', 'astropy.coordinates.representation', 'astropy.coordinates.distances', 'astropy.coordinates.matrix_utilities', 'astropy.coordinates.attributes', 'astropy.coordinates.earth', 'astropy.coordinates.sites', 'astropy.coordinates.builtin_frames', 'astropy.coordinates.builtin_frames.baseradec', 'astropy.coordinates.builtin_frames.icrs', 'astropy.coordinates.builtin_frames.fk5', 'astropy.coordinates.earth_orientation', '_strptime', 'astropy.coordinates.builtin_frames.utils', 'astropy.utils.iers', 'astropy.utils.iers.iers', 'astropy.coordinates.builtin_frames.fk4', 'astropy.coordinates.builtin_frames.galactic', 'astropy.coordinates.builtin_frames.galactocentric', 'astropy.coordinates.builtin_frames.lsr', 'astropy.coordinates.builtin_frames.supergalactic', 'astropy.coordinates.builtin_frames.altaz', 'astropy.coordinates.builtin_frames.gcrs', 'astropy.coordinates.builtin_frames.cirs', 'astropy.coordinates.builtin_frames.itrs', 'astropy.coordinates.builtin_frames.hcrs', 'astropy.coordinates.builtin_frames.ecliptic', 'astropy.coordinates.builtin_frames.skyoffset', 'astropy.coordinates.builtin_frames.icrs_fk5_transforms', 'astropy.coordinates.builtin_frames.fk4_fk5_transforms', 'astropy.coordinates.builtin_frames.galactic_transforms', 'astropy.coordinates.builtin_frames.supergalactic_transforms', 'astropy.coordinates.builtin_frames.icrs_cirs_transforms', 'astropy.coordinates.builtin_frames.cirs_observed_transforms', 'astropy.coordinates.builtin_frames.intermediate_rotation_transforms', 'astropy.coordinates.builtin_frames.ecliptic_transforms', 'astropy.coordinates.name_resolve', 'astropy.coordinates.sky_coordinate', 'astropy.wcs', 'astropy.wcs.wcs', 'astropy.wcs._docutil', 'astropy.wcs._wcs', 'astropy.wcs.wcsapi', 'astropy.wcs.wcsapi.low_level_api', 'astropy.wcs.wcsapi.high_level_api', 'astropy.wcs.wcsapi.utils', 'astropy.wcs.wcsapi.high_level_wcs_wrapper', 'astropy.wcs.wcsapi.fitswcs', 'astropy.wcs.utils', 'astropy.coordinates.sky_coordinate_parsers', 'astropy.utils.state', 'astropy.coordinates.matching', 'astropy.coordinates.funcs', 'astropy.coordinates.calculation', 'astropy.coordinates.solar_system', 'astropy.coordinates.orbital_elements', 'astropy.nddata.ccddata', 'astropy.nddata.bitmask', 'astropy.modeling.parameters', 'astropy.modeling.mappings', 'astropy.modeling.projections', 'astropy.modeling._projections', 'astropy.modeling.rotations', 'astropy.modeling.polynomial', 'astropy.modeling.functional_models', 'astropy.modeling.powerlaws', 'astropy.modeling.tabular', 'astropy.modeling.blackbody', 'astropy.modeling.separable', 'astropy.convolution.kernels', 'astropy.convolution.convolve', 'numpy.distutils', 'numpy.distutils.__version__', 'numpy.distutils.ccompiler', 'distutils.ccompiler', 'distutils.errors', 'distutils.spawn', 'distutils.debug', 'distutils.log', 'distutils.file_util', 'distutils.dir_util', 'distutils.dep_util', 'distutils.util', 'distutils.sysconfig', 'numpy.distutils.log', 'numpy.distutils.misc_util', 'numpy.distutils.compat', 'curses', '_curses', 'numpy.distutils.exec_command', 'numpy.distutils.unixccompiler', 'distutils.unixccompiler', 'numpy.distutils.info', 'numpy.distutils.npy_pkg_config', 'configparser', 'numpy.distutils.__config__', '_sysconfigdata_m_linux_x86_64-linux-gnu', 'simcado.psf', 'simcado.fv_psf', 'simcado.image_plane_utils', 'simcado.detector', 'simcado.commands', 'simcado.nghxrg', 'astropy.stats', 'astropy.stats.funcs', 'astropy.stats._stats', 'astropy.stats.biweight', 'astropy.stats.sigma_clipping', 'astropy.stats.jackknife', 'astropy.stats.circstats', 'astropy.stats.bayesian_blocks', 'astropy.stats.histogram', 'astropy.stats.info_theory', 'astropy.stats.lombscargle', 'astropy.stats.lombscargle.core', 'astropy.stats.lombscargle.implementations', 'astropy.stats.lombscargle.implementations.main', 'astropy.stats.lombscargle.implementations.slow_impl', 'astropy.stats.lombscargle.implementations.fast_impl', 'astropy.stats.lombscargle.implementations.utils', 'astropy.stats.lombscargle.implementations.scipy_impl', 'astropy.stats.lombscargle.implementations.chi2_impl', 'astropy.stats.lombscargle.implementations.mle', 'astropy.stats.lombscargle.implementations.fastchi2_impl', 'astropy.stats.lombscargle.implementations.cython_impl', 'astropy.stats.lombscargle._statistics', 'astropy.stats.spatial', 'astropy.stats.bls', 'astropy.stats.bls.core', 'astropy.stats.bls.methods', 'astropy.stats.bls._impl', 'simcado.optics', 'simcado.source', 'synphot', 'synphot.config', 'synphot.utils', 'synphot.exceptions', 'synphot.units', 'synphot.models', 'synphot.compat', 'synphot.observation', 'synphot.binning', 'synphot.synphot_utils', 'synphot.spectrum', 'synphot.specio', 'synphot.reddening', 'synphot.thermal', 'simcado.simulation', 'simcado.version', 'matplotlib', 'matplotlib.cbook', 'matplotlib.cbook.deprecation', 'matplotlib.rcsetup', 'matplotlib.fontconfig_pattern', 'pyparsing', 'matplotlib.colors', 'matplotlib._color_data', 'cycler', 'six', 'six.moves', 'matplotlib._version', 'dateutil', 'dateutil._version']
-03/06/2020 11:43:39 AM CACHEDIR=/user/homedir/demarsd/.cache/matplotlib
-03/06/2020 11:43:39 AM Using fontManager instance from /user/homedir/demarsd/.cache/matplotlib/fontlist-v300.json
-03/06/2020 11:43:39 AM Loaded backend qt5agg version unknown.
-03/06/2020 11:43:39 AM Loaded backend tkagg version unknown.
-03/06/2020 11:43:39 AM Loaded backend TkAgg version unknown.
-03/06/2020 11:43:48 AM update_title_pos
-03/06/2020 11:43:49 AM findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
-03/06/2020 11:43:49 AM update_title_pos
-03/06/2020 02:58:21 PM update_title_pos
-03/06/2020 02:58:21 PM update_title_pos
-03/06/2020 02:58:25 PM update_title_pos
-03/06/2020 02:58:25 PM update_title_pos
-03/06/2020 02:58:25 PM update_title_pos
-03/06/2020 02:58:25 PM update_title_pos
-03/06/2020 02:58:26 PM update_title_pos
-03/06/2020 02:58:26 PM update_title_pos
-03/06/2020 02:58:29 PM update_title_pos
-03/06/2020 02:58:49 PM update_title_pos
-03/06/2020 02:58:49 PM update_title_pos
-03/06/2020 02:59:17 PM update_title_pos
-03/06/2020 02:59:17 PM update_title_pos
-03/06/2020 02:59:39 PM update_title_pos
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02, 1.e+03, 1.e+04])
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs [0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009000000000000001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 7000.0, 8000.0, 9000.0, 20000.0, 30000.0, 40000.0, 50000.0, 60000.0, 70000.0, 80000.0, 90000.0]
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXGeneral:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXGeneral ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXGeneral:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXGeneral ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXGeneral:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to STIXGeneral ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf') with score of 0.000000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXNonUnicode:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXNonUnicode ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXNonUnicode:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXNonUnicode ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXNonUnicode:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to STIXNonUnicode ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf') with score of 0.000000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXSizeOneSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeOneSym ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXSizeTwoSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeTwoSym ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXSizeThreeSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeThreeSym ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXSizeFourSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeFourSym ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=STIXSizeFiveSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeFiveSym ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmsy10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmsy10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmr10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmr10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmtt10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmtt10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmmi10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmmi10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmb10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmb10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmss10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmss10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=cmex10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmex10 ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=DejaVu Sans:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=DejaVu Sans:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf') with score of 0.150000.
-03/06/2020 02:59:39 PM findfont: Matching :family=DejaVu Sans:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to DejaVu Sans ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf') with score of 0.000000.
-03/06/2020 02:59:39 PM findfont: Matching :family=DejaVu Sans Mono:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans Mono ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM findfont: Matching :family=DejaVu Sans Display:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans Display ('/nix/store/zczwhqklxii42yk6ks275jwyqlzjwrps-python3-3.7.2-env/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf') with score of 0.050000.
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02, 1.e+03, 1.e+04])
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs [0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009000000000000001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 7000.0, 8000.0, 9000.0, 20000.0, 30000.0, 40000.0, 50000.0, 60000.0, 70000.0, 80000.0, 90000.0]
-03/06/2020 02:59:39 PM update_title_pos
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02, 1.e+03, 1.e+04])
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs [0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009000000000000001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 7000.0, 8000.0, 9000.0, 20000.0, 30000.0, 40000.0, 50000.0, 60000.0, 70000.0, 80000.0, 90000.0]
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02, 1.e+03, 1.e+04])
-03/06/2020 02:59:39 PM vmin 0.01982961168425601 vmax 179.08911934994524
-03/06/2020 02:59:39 PM ticklocs [0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009000000000000001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 7000.0, 8000.0, 9000.0, 20000.0, 30000.0, 40000.0, 50000.0, 60000.0, 70000.0, 80000.0, 90000.0]
+04/01/2020 09:30:51 PM SimCADO imported
+04/01/2020 09:40:59 PM UserCommands object created
+04/01/2020 09:40:59 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:40:59 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:15 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:15 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:29 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:29 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:29 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:29 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:47 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:47 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:47 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:47 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:59 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:59 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:41:59 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:41:59 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:46:59 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:46:59 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:04 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:04 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:05 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:05 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:05 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:05 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:05 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:05 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:06 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:06 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:06 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:06 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:24 PM UserCommands object created
+04/01/2020 09:47:24 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:24 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:24 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:24 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:47:25 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:47:25 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:52 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:52 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:52 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:52 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:52 PM [OpticalTrain] Generating an optical train
+04/01/2020 09:48:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:54 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:54 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:54 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:54 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:54 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:54 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:55 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:55 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:55 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:55 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:55 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:55 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:55 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:55 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:56 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:48:56 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:48:56 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 09:48:56 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 09:48:56 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 09:48:57 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 09:49:32 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:32 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:32 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:32 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:32 PM [OpticalTrain] Generating an optical train
+04/01/2020 09:49:33 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:33 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:34 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:34 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:34 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:34 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:34 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:34 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:35 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:35 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:35 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:35 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:35 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:35 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:36 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:36 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:36 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:36 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:36 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:49:36 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:49:36 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 09:49:36 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 09:49:36 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 09:49:37 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 09:51:05 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:05 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:17 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:17 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:17 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:17 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:17 PM [OpticalTrain] Generating an optical train
+04/01/2020 09:51:18 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:18 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:19 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:19 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:19 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:19 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:19 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:19 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:20 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:20 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:20 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:20 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:20 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:20 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:20 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:20 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:21 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:21 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:21 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:51:21 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:51:21 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 09:51:21 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 09:51:21 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 09:51:22 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 09:53:05 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:53:05 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:22 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:22 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:29 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:29 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:29 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:29 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:29 PM [OpticalTrain] Generating an optical train
+04/01/2020 09:59:30 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:30 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:30 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:30 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:31 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:31 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:31 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:31 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:31 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:31 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:32 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:32 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:32 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:32 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:32 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:32 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:33 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:33 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:33 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 09:59:33 PM [UserCommands] lam_bin_edges found
+04/01/2020 09:59:33 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 09:59:33 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 09:59:33 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 09:59:34 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 10:01:12 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:01:12 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:45 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:45 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:45 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:45 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:45 PM [OpticalTrain] Generating an optical train
+04/01/2020 10:02:46 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:46 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:46 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:46 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:46 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:46 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:47 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:47 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:47 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:47 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:47 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:47 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:48 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:48 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:48 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:48 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:48 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:48 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:48 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:02:48 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:02:48 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 10:02:49 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 10:02:49 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 10:02:50 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 10:04:24 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:24 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:24 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:24 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:24 PM [OpticalTrain] Generating an optical train
+04/01/2020 10:04:25 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:25 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:26 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:26 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:26 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:26 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:27 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:27 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:27 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:27 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:27 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:27 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:28 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:28 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:28 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:28 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:28 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:28 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:28 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:04:28 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:04:28 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 10:04:28 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 10:04:29 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 10:04:30 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 10:06:11 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:06:11 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:50 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:50 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:50 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:50 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:50 PM [OpticalTrain] Generating an optical train
+04/01/2020 10:07:51 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:51 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:52 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:52 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:52 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:52 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:52 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:52 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:53 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:53 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:54 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:54 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:54 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:07:54 PM [UserCommands] lam_bin_edges found
+04/01/2020 10:07:54 PM [gen_all_tc] Generating AO module mirror emission photons
+04/01/2020 10:07:54 PM [_gen_all_tc] Generating telescope mirror emission photons
+04/01/2020 10:07:54 PM [_gen_all_tc] Generating atmospheric emission photons
+04/01/2020 10:07:55 PM [_gen_all_tc] GGenerating optical path for source photons
+04/01/2020 10:09:33 PM [UserCommands] Determining lam_bin_edges
+04/01/2020 10:09:33 PM [UserCommands] lam_bin_edges found

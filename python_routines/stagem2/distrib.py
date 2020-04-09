@@ -1,6 +1,12 @@
 
 import numpy as np
 import warnings
+from scipy.interpolate import interp1d
+from os.path import join
+import stagem2.utils as ut
+stdatadir = join(ut.__pkg_dir__, "data")
+import matplotlib.pyplot as plt
+import astropy .units as u
 
 
 HDR = {"TYPE": "Not initiated",
@@ -41,6 +47,206 @@ class distrib:
     
     def random(self,number):
         return self.rand(number)
+
+class log_normal(distrib):
+    def __init__(self, log_mean, sigma):
+        self.mean= log_mean
+        self.sigma = sigma
+        self.make_distrib()
+    
+    def evaluate(self, x):
+        val =  (1/(self.sigma * np.sqrt(2*np.pi))) * np.exp(-(np.log10(x)-self.mean)**2 / (2 * self.sigma**2))
+        return val
+    
+    def make_distrib(self, low = None, up = None, size = 3, length = 2001):
+        if low is None:
+            low = self.mean - size*self.sigma
+        if up is None:
+            up = self.mean + size * self.sigma
+        
+        oldx = np.linspace(low,up, length, endpoint = True)
+        x = [10**(oldx[i]) for i in range(len(oldx))]
+        y = [self.evaluate(x[i]) for i in range(len(x))]
+        integ = [np.trapz(y[0:k+1], oldx[0:k+1]) for k in range(len(y))]
+        norm = integ[-1]
+        integ = np.dot(integ, 1/norm)
+        fun = interp1d(integ, oldx)
+        self.function = fun
+    
+    def random(self):
+        c = np.random.uniform()
+        return 10**self.function(c)
+
+class raghavan(log_normal):
+    def __init__(self):
+        self.log_mean_period = np.log10((10**5.03) * 24*3600)
+        self.sigma_period = np.log10((10**2.28) * 24*3600)
+        au = 1.5e11
+        sig_trans =(np.log10(period_to_semiaxis(10**4)/au) - np.log10(period_to_semiaxis(10**2)/au))/4
+        self.log_mean_semiaxis = np.log10(period_to_semiaxis(10**self.log_mean_period)/au)
+        # self.sigma_semiaxis = np.log10(period_to_semiaxis(10**self.sigma_period)/au)
+        self.sigma_semiaxis = self.sigma_period * sig_trans
+        super().__init__(self.log_mean_semiaxis, self.sigma_semiaxis)
+
+
+class ward_duong(log_normal):
+    def __init__(self):
+        self.log_mean_semiaxis = 0.77
+        self.sigma_semiaxis = 1.34
+        super().__init__(self.log_mean_semiaxis, self.sigma_semiaxis)
+
+class sep_low_duchene(log_normal):
+    def __init__(self):
+        self.log_mean_semiaxis = np.log10(4.5)
+        self.sigma_semiaxis = 0.5
+        super().__init__(self.log_mean_semiaxis, self.sigma_semiaxis)
+
+class mass_ratio(distrib):
+    def __init__(self, hdr = HDR.copy()):
+        hdr["TYPE"] = "Mass Ratio"
+        super().__init__(hdr.copy())
+
+class mass_duchene(mass_ratio):
+    def __init__(self, gamma, hdr = HDR.copy()):
+        hdr["NAME"] = "Duchene2013"
+        self.gamma = gamma
+        super().__init__(hdr.copy())
+        
+    def evaluate(self, q):
+        gamma = self.gamma
+        val = (gamma +1) * q**(gamma)
+        return val
+    
+    def random(self):
+        c = np.random.uniform()
+        gamma = self.gamma
+        q = (c/(gamma+1))**(1/gamma)
+        return q
+    
+    def norm(self):
+        return 0
+
+
+
+class el_badry(mass_ratio):
+    """
+    Mass ratio distribution as in El-Badry2019. This class uses all parameters from their fits given in the article appendix.
+    """
+    def __init__(self, hdr = HDR.copy()):
+        hdr["NAME"] = "El-Badry2019"
+        parameters = self.load_elbadry_fits()
+        self.M_min = parameters[0]
+        self.M_max = parameters[1]
+        self.sep_min = [50,350,600,1000,2500,5000,15000]
+        self.sep_max = [350,600,1000,2500,5000,15000,50000]
+        self.qbreak = [0.5,0.5,0.5,0.5,0.3]
+        self.F_twin = parameters[2]
+        self.q_twin = parameters[3]
+        self.gamma_large = parameters[4]
+        self.gamma_small = parameters[5]
+        self.gamma_s = parameters[6]
+        super().__init__(hdr.copy())
+        self.functions = self.make_array()
+    
+    def norm(self):
+        return 0
+    
+    def load_elbadry_fits(self):
+        filename = stdatadir + "/el-badry_mass_ratio_fits.txt"
+        vals =np.loadtxt(filename, delimiter = ";")
+        M_min = vals[0]
+        M_max = vals[1]
+        F_twin = vals[2:9]
+        q_twin = vals[9:16]
+        gamma_large = vals[16:23]
+        gamma_small = vals[23:30]
+        gamma_s = vals[30:37]
+        return M_min, M_max, F_twin, q_twin, gamma_large, gamma_small, gamma_s
+    
+    def make_array(self):
+        x = np.linspace(0,1,2001, endpoint = True)
+        functions = []
+        for i in range(len(self.sep_min)):
+            sep_bin = []
+            for j in range(len(self.M_min)):
+                fun = sub_badry(self.qbreak[j], self.F_twin[i][j], self.q_twin[i][j], self.gamma_large[i][j], self.gamma_small[i][j])
+                y = [fun.evaluate(x[k]) for k in range(len(x))]
+                integ = [np.trapz(y[0:k+1], x[0:k+1]) for k in range(len(y))]
+                newfun = interp1d(x, integ)
+                sep_bin.append(newfun)
+                ut.printProgressBar(i*(len(self.M_min))+j+1, len(self.sep_min)*len(self.M_min))
+            functions.append(sep_bin)
+        return functions
+    
+    def random(self, mass, sep):
+        # Searching for separation bin
+        flag = False
+        for i in range(len(self.sep_min)):
+            if sep >= self.sep_min[i] and sep<= self.sep_max[i]:
+                sep_idx = i
+                flag = True
+                break
+        if flag == False:
+            raise ValueError("given separation is out of El-Badry range, given separation : {}".format(sep))
+            return 1
+        
+        flag = False
+        # Searching for mass bin
+        for i in range(len(self.M_min)):
+            if mass >= self.M_min[i] and mass<= self.M_max[i]:
+                M_idx = i
+                flag = True
+                break
+        if flag == False:
+             warnings.warn("given mass is out of El-Badry range, given mass : {}".format(mass))
+             return 1
+        
+        func = self.functions[sep_idx][M_idx]
+        mass_ratio = func(np.random.uniform())
+        return mass_ratio
+        
+class sub_badry(el_badry):
+    def __init__(self, qbreak, ftwin, qtwin, gamlarge, gamsmall):
+        self.qbreak = qbreak
+        self.ftwin = ftwin
+        self.qtwin = qtwin
+        self.gaml = gamlarge
+        self.gams = gamsmall
+        self.norm()
+    
+    def norm(self):
+        qbreak = self.qbreak
+        ftwin = self.ftwin
+        qtwin = self.qtwin
+        gaml = self.gaml
+        gams = self.gams
+        first = 1/(gams+1) * (0.3**(gams+1) - 0.05**(gams+1))
+        second = 1/(1-ftwin) * (1/(gams +1) * (qbreak**(gams+1) - 0.3**(gams+1)) + (qbreak**(gams-gaml) /(gaml+1)) * (1 - qbreak**(gaml+1)))
+        self.normfact = first + second
+        b = ftwin/(1-qtwin) * second
+        self.b = b
+    
+    def evaluate(self, q):
+        qbreak = self.qbreak
+        gams = self.gams
+        gaml = self.gaml
+        qtwin = self.qtwin
+        b = self.b
+        normfact = self.normfact
+        if q>= 0 and q < 0.05:
+            return 0
+        elif q >= 0.05 and q < qbreak:
+            val = (1/normfact) * q**gams
+            return val
+        elif q >= qbreak and q < qtwin:
+            val = qbreak**(gams-gaml) / normfact * q**gaml
+            return val
+        elif q >= qtwin and q <= 1:
+            val = qbreak**(gams-gaml) / normfact * q**gaml + b/normfact
+            return val
+        else:
+            raise ValueError("q must be between 0 and 1")
+
 
 
 class position(distrib):
@@ -115,20 +321,41 @@ class EFF(position):
     Position distribution along Elson, Fall & Freeman (1987) distribution
     rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)
     """
-    def __init__(self, a, gamma, hdr = HDR.copy()):
+    def __init__(self, a, gamma, rmax, rmin = 0, hdr = HDR.copy()):
         hdr["NAME"] = "Elson, Fall & Freeman"
         hdr["ANALYTICAL_FORM"] = "rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)"
         hdr["a"] = a
+        self.a = a
         hdr["GAMMA"] = gamma
+        self.gamma= gamma
+        self.rmin = rmin
+        self.rmax = rmax
         super().__init__(hdr.copy())
+        self.make_distrib()
     
     def norm(self):
-        #TODO
         return 0
     
-    def inv(self):
-        #TODO
-        return 0
+    def evaluate(self, R):
+        gamma = self.gamma
+        a = self.a
+        val = (1 + (R/a)**2)**(-(gamma+1)/2)
+        return val
+        
+    def make_distrib(self, length = 2001):
+        x = np.linspace(self.rmin,self.rmax, length, endpoint = True)
+        y = [self.evaluate(x[i]) for i in range(len(x))]
+        integ = [np.trapz(y[0:k+1], x[0:k+1]) for k in range(len(y))]
+        norm = integ[-1]
+        integ = np.dot(integ, 1/norm)
+        fun = interp1d(integ, x)
+        self.function = fun
+    
+    def random(self):
+        c = np.random.uniform()
+        val = self.function(c)
+        return val
+
 
 class imf(distrib):
     """
@@ -188,12 +415,11 @@ class imf(distrib):
             self.norm()
         masses = []
         sum = 0
-        print(sum)
         while sum < total_mass:
             val = self.random(number = None)
-            sum += val
             masses.append(val)
-            print(sum)
+            sum += val
+            ut.printProgressBar(sum, total_mass, length = 50)
         
         print("Asked mass = {} M_sol".format(total_mass))
         print("Final mass = {} M_sol".format(np.sum(masses)))
@@ -204,7 +430,6 @@ class imf(distrib):
 class seg_powerlaw(imf):
     """
     #TODO Segmented power law, Kroupa 2001 2002
-    
     """
     def __init__(self, mass_ranges, power_ranges,  hdr = HDR.copy(), name = "Segmented Power Law"):
         hdr["NAME"] = name
@@ -465,9 +690,75 @@ class salpeter(powerlaw):
 
 
 
+def period_to_semiaxis(period, M = 1.5, G = 6.67e-11 ):
+    M *= 1.98e30
+    a = ( G*M * (period/(2*np.pi))**2)**(1/3)
+    return a
 
+def make_coordinates(radius):
+    if not hasattr(radius,"__iter__"):
+        radius = [radius]
+    x, y, z = [], [], []
+    for r in radius:
+        theta = np.random.uniform() * 2*np.pi
+        phi = np.random.uniform() * 2*np.pi
+        x.append(r * np.sin(theta) * np.cos(phi))
+        y.append(r * np.sin(theta) * np.sin(phi))
+        z.append(r * np.cos(theta))
+    if len(x) == 1:
+        return x[0],y[0],z[0]
+    else:
+        return x,y,z
 
-
+def make_system_pos(systems, pos):
+    """
+    Make systems position depending on multiplicity and separation
+    """
+    masses = []
+    oldx, oldy, oldz = pos[0], pos[1], pos[2]
+    x,y,z = [],[],[]
+    multiplicity = []
+    linked_to = []
+    for i in range(len(systems)):
+        system = systems[i]
+        if system[-1] is None:
+            masses.append(system[0])
+            x.append(oldx[i])
+            y.append(oldy[i])
+            z.append(oldz[i])
+            multiplicity.append(1)
+            linked_to.append(len(linked_to))
+        else:
+            mass_1 = system[0]
+            mass_2 = system[1]
+            a = ((system[-1] * u.au).to(u.pc)).value
+            theta = np.random.uniform() * 2*np.pi
+            phi = np.random.uniform() * 2*np.pi
+            dx = a * np.sin(theta) * np.cos(phi)
+            dy = a * np.sin(theta) * np.sin(phi)
+            dz = a * np.cos(theta)
+            x.append(oldx[i] + dx)
+            x.append(oldx[i] - dx)
+            y.append(oldy[i] + dy)
+            y.append(oldy[i] - dy)
+            z.append(oldz[i] + dz)
+            z.append(oldz[i] - dz)
+            masses.append(mass_1)
+            masses.append(mass_2)
+            multiplicity.append(2)
+            multiplicity.append(2)
+            linked_to.append(len(linked_to)+1)
+            linked_to.append(len(linked_to)-1)
+    newpos = [x,y,z]
+    return masses,newpos, multiplicity, linked_to
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
