@@ -80,9 +80,10 @@ class log_normal(distrib):
 class raghavan(log_normal):
     def __init__(self):
         self.log_mean_period = np.log10((10**5.03) * 24*3600)
-        self.sigma_period = np.log10((10**2.28) * 24*3600)
+        # self.sigma_period = np.log10((10**2.28) * 24*3600)
+        self.sigma_period = 2.28    #sigma log period in days
         au = 1.5e11
-        sig_trans =(np.log10(period_to_semiaxis(10**4)/au) - np.log10(period_to_semiaxis(10**2)/au))/4
+        sig_trans =(np.log10(period_to_semiaxis(10**4)/au) - np.log10(period_to_semiaxis(10**2)/au))/(4-2)
         self.log_mean_semiaxis = np.log10(period_to_semiaxis(10**self.log_mean_period)/au)
         # self.sigma_semiaxis = np.log10(period_to_semiaxis(10**self.sigma_period)/au)
         self.sigma_semiaxis = self.sigma_period * sig_trans
@@ -97,8 +98,15 @@ class ward_duong(log_normal):
 
 class sep_low_duchene(log_normal):
     def __init__(self):
-        self.log_mean_semiaxis = np.log10(4.5)
-        self.sigma_semiaxis = 0.5
+        self.log_mean_semiaxis = np.log10(4.5)  # mean value log in semiaxis
+        self.sigma_period = 0.5     #sigma log period in days
+        
+        au = 1.5e11
+        sig_trans =(np.log10(period_to_semiaxis(10**4, M =0.1)/au) - np.log10(period_to_semiaxis(10**2, M = 0.1)/au))/(4-2)
+        
+        # self.sigma_semiaxis = np.log10(period_to_semiaxis(10**self.sigma_period)/au)
+        self.sigma_semiaxis = self.sigma_period * sig_trans
+        
         super().__init__(self.log_mean_semiaxis, self.sigma_semiaxis)
 
 class mass_ratio(distrib):
@@ -112,19 +120,34 @@ class mass_duchene(mass_ratio):
         self.gamma = gamma
         super().__init__(hdr.copy())
         
-    def evaluate(self, q):
+    def evaluate(self, q, normalize = False):
         gamma = self.gamma
-        val = (gamma +1) * q**(gamma)
+        if normalize == True:
+            norm = 1
+        else:
+            norm = self.normfact
+        val = 1/norm* q**(gamma)
         return val
     
-    def random(self):
-        c = np.random.uniform()
-        gamma = self.gamma
-        q = (c/(gamma+1))**(1/gamma)
+    def random(self, vallow = 0.1):
+        if self.gamma <0:
+            c= np.random.uniform()
+            gamma = self.gamma
+            q = (c*(gamma+1)*self.normfact +vallow**(gamma+1))**(1/(gamma+1))
+        else:
+            c = np.random.uniform()
+            gamma = self.gamma
+            q = (c*(gamma+1)*self.normfact)**(1/(gamma+1))
         return q
     
-    def norm(self):
-        return 0
+    def norm(self, vallow = 0.1):
+        if self.gamma <0:
+            q = np.linspace(vallow, 1, 1000)
+        else:
+            q = np.linspace(0,1,1000)
+        vals = self.evaluate(q, normalize = True)
+        integ = np.trapz(vals,q)
+        self.normfact = integ
 
 
 
@@ -178,7 +201,7 @@ class el_badry(mass_ratio):
             functions.append(sep_bin)
         return functions
     
-    def random(self, mass, sep):
+    def random(self, mass, sep, q_min = 0.05):
         # Searching for separation bin
         flag = False
         for i in range(len(self.sep_min)):
@@ -202,7 +225,12 @@ class el_badry(mass_ratio):
              return 1
         
         func = self.functions[sep_idx][M_idx]
-        mass_ratio = func(np.random.uniform())
+        
+        flag = False
+        while flag == False:
+            mass_ratio = func(np.random.uniform())
+            if mass_ratio >= q_min:
+                flag = True
         return mass_ratio
         
 class sub_badry(el_badry):
@@ -319,11 +347,11 @@ class gaussian(position):
 class EFF(position):
     """
     Position distribution along Elson, Fall & Freeman (1987) distribution
-    rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)
+    rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma+1)/2)
     """
     def __init__(self, a, gamma, rmax, rmin = 0, hdr = HDR.copy()):
         hdr["NAME"] = "Elson, Fall & Freeman"
-        hdr["ANALYTICAL_FORM"] = "rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma-1)/2)"
+        hdr["ANALYTICAL_FORM"] = "rho(R) = rho_0 * (1 + (R/a)^2)^(-(gamma+1)/2)"
         hdr["a"] = a
         self.a = a
         hdr["GAMMA"] = gamma
@@ -459,6 +487,9 @@ class seg_powerlaw(imf):
             sum += prod * (masses[i+1]**(powe) - masses[i]**(powe))/(powe)
         self.hdr["NORMALIZATION_FACTOR"] = sum
         
+        
+        self.normfactinteg = self.evaluate_dlogm_value(1, normalize = True)
+        
         # Integral values for successive segments
         integ = []
         tot = 0
@@ -494,6 +525,42 @@ class seg_powerlaw(imf):
         prefact = prod/self.hdr["NORMALIZATION_FACTOR"]
         out = prefact * mass**(-powers[index])
         return out
+    
+    
+    
+    def evaluate_dlogm_value(self, mass, normalize = False, avoid_norm = False):
+        """
+        Returns the value of the distribution for a given mass
+        """
+        masses,powers = self.get_param()
+        
+        if normalize == True:
+            m = np.logspace(np.log10(masses[0]), np.log10(masses[-1]), 2000)
+            m[0] = masses[0]
+            m[-1] = masses[-1]
+            vals = [self.evaluate_dlogm_value(mass = m[i], normalize = False, avoid_norm = True) for i in range(len(m))]
+            integ = np.trapz(vals, np.log10(m))
+            return integ
+        
+        
+        index = 0
+        while True:
+            if masses[index] <= mass and masses[index+1]>= mass:
+                break
+            index += 1
+        
+        if avoid_norm is False:
+            normfact = self.normfactinteg
+        else:
+            normfact = 1
+        
+        prod = 1
+        for k in range(1,index+1):
+            prod *= masses[k]**(powers[k] - powers[k-1])
+        prefact = prod/normfact
+        out = prefact * mass**(-powers[index] +1)
+        return out
+        
     
     def evaluate_integ(self, mass):
         """
@@ -705,6 +772,12 @@ def make_coordinates(radius):
         x.append(r * np.sin(theta) * np.cos(phi))
         y.append(r * np.sin(theta) * np.sin(phi))
         z.append(r * np.cos(theta))
+    if np.nan in x:
+        print("In x")
+    if np.nan in y:
+        print("In y")
+    if np.nan in z:
+        print("In z")
     if len(x) == 1:
         return x[0],y[0],z[0]
     else:
@@ -731,7 +804,7 @@ def make_system_pos(systems, pos):
         else:
             mass_1 = system[0]
             mass_2 = system[1]
-            a = ((system[-1] * u.au).to(u.pc)).value
+            a = ((system[-1]/2 * u.au).to(u.pc)).value
             theta = np.random.uniform() * 2*np.pi
             phi = np.random.uniform() * 2*np.pi
             dx = a * np.sin(theta) * np.cos(phi)
@@ -755,7 +828,9 @@ def make_system_pos(systems, pos):
     
     
     
-    
+def fun(r, a = 0.13, gamma = 2.3):
+    val = (1+ (r/a)**2)**(-gamma/2)
+    return val
     
     
     

@@ -10,58 +10,56 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 import time
 
-# Table(np.array([1, 2, 3]), names=['a', 'b', 'c'], dtype=('i8', 'i8', 'i8'))
 
 
-class cluster(Table):
-    """
-    cluster object, is basically an astropy table
-    """
+
     
-    def __init__(self,
-                 masses = None,
-                 pos = None,
-                 pos_labels = None,
-                 imf_type = None,
-                 imf_args = {},
-                 pos_type = None,
-                 pos_args = {},
-                 total_mass = None,
-                 number = None,
-                 binary = None,
-                 segregation = None,
-                 *args, **kwargs):
-        
-        start = time.time()
-        if masses is None:
-            if imf_type is None:
-                raise ValueError("imf_type should not be None if masses is not provided")
-            if total_mass is None and number is None:
-                raise ValueError("Please provide one of these arguments : total_mass / number. ")
-            print("Generating stars")
-            if number is not None:
-                masses = eval("dist.{}(**imf_args).rand(number)".format(imf_type))
-            elif total_mass is not None:
-                masses = eval("dist.{}(**imf_args).mass_population(total_mass)".format(imf_type))
-            else:
-                raise ValueError("Didn't succeed to make masses list in etiher the 'number' or 'masses' way")
-        
-        if binary is not None:
-            # Pair stars according to Lu2013 Fig 16 with only binary or single systems
-            print("___________________________")
-            print("Making binary systems")
-            masses = np.sort(masses)[::-1]
-            systems = make_binary_systems(masses)
-        
-        if pos is None:
-            # Generate position according
-            print("___________________________")
-            print("Computing position")
-            masses, pos, multiplicity, linked_to = make_position(systems, pos_args)
-                
-        Table.__init__(self, [masses, pos[0], pos[1], pos[2], multiplicity, linked_to], names = ("Mass_[Msun]", "x_[pc]", "y_[pc]", "z_[pc]", "Multiplicity", "Linked_to")) # dtype=('f8', 'f8', 'f8', 'f8'))
-        end = time.time()
-        print("Elapsed time : {:.2f} seconds".format(end - start))
+def cluster(masses = None,
+             pos = None,
+             pos_labels = None,
+             imf_type = None,
+             imf_args = {},
+             pos_type = "EFF",
+             pos_args = {},
+             total_mass = None,
+             number = None,
+             binary = None,
+             segregation = None,
+             *args, **kwargs):
+    
+    start = time.time()
+    if masses is None:
+        if imf_type is None:
+            raise ValueError("imf_type should not be None if masses is not provided")
+        if total_mass is None and number is None:
+            raise ValueError("Please provide one of these arguments : total_mass / number. ")
+        print("Generating stars")
+        if number is not None:
+            masses = eval("dist.{}(**imf_args).rand(number)".format(imf_type))
+        elif total_mass is not None:
+            masses = eval("dist.{}(**imf_args).mass_population(total_mass)".format(imf_type))
+        else:
+            raise ValueError("Didn't succeed to make masses list in etiher the 'number' or 'masses' way")
+    
+    if binary is not None:
+        # Pair stars according to Lu2013 Fig 16 with only binary or single systems
+        print("___________________________")
+        print("Making binary systems")
+        masses = np.sort(masses)[::-1]
+        systems = make_binary_systems(masses)
+    else:
+        masses = [[masses[i],None] for i in range(len(masses))]
+    
+    if pos is None:
+        # Generate position according
+        print("___________________________")
+        print("Computing position")
+        masses, pos, multiplicity, linked_to = make_position(systems, pos_args, pos_type, segregation = segregation)
+            
+    cl = Table([masses, pos[0], pos[1], pos[2], multiplicity, linked_to], names = ("Mass_[Msun]", "x_[pc]", "y_[pc]", "z_[pc]", "Multiplicity", "Linked_to"))
+    end = time.time()
+    print("Elapsed time : {:.2f} seconds".format(end - start))
+    return cl
 
 #Arches
 pos_args = {"a":0.13,
@@ -77,22 +75,105 @@ pos_args = {"a":0.025,
 "mass = 1.03e5 Msol"
 "distance = 50000 pc"
 
-def make_position(systems, pos_args):
-    eff = dist.EFF(**pos_args)
+
+def make_arches():
+    pos_args = {"a":0.13,
+            "gamma":2.3,
+            "rmax":3}
+    mass = 2.44e4
+    distance = 8000
+    cl = cluster(imf_type = "kroupa",
+                 pos_type = "EFF",
+                 pos_args = pos_args,
+                 total_mass = mass,
+                 binary = 1,
+                 segregation = 0.3)
+    return cl, distance
+
+def make_r136():
+    pos_args = {"a":0.025,
+            "gamma":1.85,
+            "rmax":10}
+    mass = 1.03e5
+    distance = 50000
+    cl = cluster(imf_type = "kroupa",
+                 pos_type = "EFF",
+                 pos_args = pos_args,
+                 total_mass = mass,
+                 binary = 1,
+                 segregation = 0.3)
+    return cl, distance
+
+def make_position(systems, pos_args, pos_type = "EFF", segregation = None):
+    """
+    Compute 3D coordinates of the input systems.
+    """
+    eff = eval("dist.{}(**pos_args)".format(pos_type))
     print("Computing distance to center of each system")
     radius = []
     for i in range(len(systems)):
         radius.append(eff.random())
     
+    #If segregation parameter is not None, mass-segregate the cluster
+    if segregation is not None:
+        print("Mass segregating the cluster")
+        systems, radius = mass_segregation(systems, radius, s = segregation)
+        
     print("Computing xyz coordinates of each system")
     pos = dist.make_coordinates(radius)
     print("Computing xyz coordinates of binaries")
     masses, pos, multiplicity, linked_to = dist.make_system_pos(systems, pos)
     return masses, pos, multiplicity, linked_to
 
+def mass_segregation(systems, radius, s):
+    """
+    Make a mass-segregated list of radius as a function of mass, in a similar way as in MCluster
+    """
+    
+    # Sorting radius
+    radius = np.sort(radius)
+    # Sorting systems by decreasing total mass
+    totmass = []
+    for i in range(len(systems)):
+        if systems[i][-1] is None:
+            totmass.append(systems[i][0])
+        else:
+            lenmax = len(systems[i])
+            totmass.append(sum([systems[i][k] for k in range(lenmax -1)]))
+    sorted_systems_idx = np.argsort(totmass)[::-1]
+    
+    out_radius = []
+    out_systems = []
+    N = len(sorted_systems_idx)
+    for i in range(N):
+        X = np.random.uniform()
+        idx = int((N - i) * (1 - X**(1-s)))  # Randomizing the radius-index of current mass
+        count = 0
+        for j in range(len(radius)):    # i-th system takes the place of the idx-th first available radius
+            if count == idx:
+                out_radius.append(radius[j])
+                out_systems.append(systems[sorted_systems_idx[i]])
+                radius = np.delete(radius, j)
+                ut.printProgressBar(i,N-1)
+                break
+            else:
+                count +=1
+    if np.nan in out_radius:
+        print("   ")
+        print("HAHAHAHAHAHAHAHAHAHA")
+    return out_systems, out_radius
+    
+    
+    
+    
+
 def make_binary_systems(masses):
+    """
+    Make paired systems. Computing pairing probability, mass ratio and separation.
+    Returns : systems = [mass1, mass2, separation(au)]
+    """
     print("Computing mass ratios and separation functions")
-    binarfun = mass_ratio_and_separation_cluster()
+    binarfun = mass_ratio_and_separation_cluster()  #Mass ratio and separation function
     
     print("Computing pairing probability, separations, mass ratios, and paired systems")
     final_systems = []
@@ -143,6 +224,9 @@ def make_binary_systems(masses):
         
             
 class separation:
+    """
+    Separation class, Used to compute separation and mass ratio of a binary system, through the 'random' method.
+    """
     def __init__(self):
         self.duch = dist.sep_low_duchene()
         self.wadu = dist.ward_duong()
@@ -155,7 +239,9 @@ class separation:
             val = self.wadu.random()
         else:
             val = self.raga.random()
-        return val
+        
+        # Since the distirbutions return the semi-major axis length, we multiply by 2 to average on a circular orbit
+        return val*2
 
 class mass_ratio_and_separation_cluster:
     def __init__(self):
@@ -164,20 +250,20 @@ class mass_ratio_and_separation_cluster:
         self.midduch = dist.mass_duchene(gamma = -0.5)
         self.separation = separation()
     
-    def random(self, mass):
+    def random(self, mass, sep_lim = 10000):
         #El Badry
         if mass >= 0.1 and mass < 2.5:
             flag = False
             while flag == False:
                 sep = self.separation.random(mass)
-                if sep >= self.elbadry.sep_min[0] and sep <= self.elbadry.sep_max[-1]:
+                if sep >= self.elbadry.sep_min[0] and sep <= self.elbadry.sep_max[-1] and sep <= sep_lim:
                     flag = True
             mratio = self.elbadry.random(mass,sep)
         else:
             flag = False
             while flag == False:
                 sep = self.separation.random(mass)
-                if sep <= 100000:
+                if sep <= sep_lim:
                     flag = True
             
             # low masses : low duchene : below 0.1 masses
@@ -329,10 +415,4 @@ def inverted_interpol_function(filename):
     return inv_interpolated
 
 
-
-def test():
-    x = np.linspace(0,100,10000)
-    y = np.linspace (0,1000,10000)
-    a = interp1d(y,x)
-    return a
 

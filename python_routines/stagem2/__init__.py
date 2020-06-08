@@ -3,7 +3,6 @@ from . import position
 from . import utils
 from . import cluster
 from os.path import join
-
 import numpy as np
 
 
